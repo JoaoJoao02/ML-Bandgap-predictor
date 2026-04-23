@@ -27,8 +27,10 @@ X = data[data_cols]
 
 Y = data["band_gap_eV"]
 
-bins = [0, 1.5000, 2.9983, Y.max()]
-labels = ["narrow_gap_semiconductor", "semiconductor", "insulator"]
+print(data.groupby("material_class")["band_gap_eV"].min())
+
+bins = [0, 0.0001, 1.5000, 2.9983, Y.max()]
+labels = ["metals", "narrow_gap_semiconductor", "semiconductor", "insulator"]
 y_cat = pd.cut(Y, bins=bins, labels=labels , include_lowest=True)
 
 print(y_cat)
