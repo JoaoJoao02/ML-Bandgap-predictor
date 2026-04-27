@@ -6,6 +6,11 @@ engineering and XGBoost regression.
 
 ---
 
+## IMPORTANT DISCLAIMER
+
+README.md is the resume of the work
+Thoughts.md is what I was thinking while building the model
+
 ## Motivation
 
 Solid State Physics is one of the most challenging subjects in 
