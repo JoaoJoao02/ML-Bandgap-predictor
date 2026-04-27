@@ -8,16 +8,13 @@ engineering and XGBoost regression.
 
 ## Motivation
 
-Solid State Physics is one of the most challenging and fascinating subjects in 
-Engineering Physics. To deepen my understanding of concepts like Fermi energy, 
+Solid State Physics is one of the most challenging subjects in 
+Engineering Physics. To deepen my understanding of core concepts of this area like Fermi energy, 
 band theory, and crystal structure, I built this project around one of the 
-field's most important material properties — the electronic band gap.
+field's most important material properties, the electronic band gap.
 
 Beyond the personal motivation, there is a real-world problem this addresses: 
-Density Functional Theory (DFT) is currently the most powerful computational 
-method for predicting electronic properties of materials, but it is 
-computationally expensive — calculating the band gap of a single material can 
-take hours to days on a supercomputer. A fast ML model that predicts band gaps 
+While DFT band gap calculations are feasible for individual materials, screening databases of hundreds of thousands of candidates remains computationally intensive, motivating faster surrogate models. A fast ML model that predicts band gaps 
 from compositional and structural descriptors could dramatically accelerate 
 materials screening for applications like solar cells, LEDs, and semiconductors.
 
@@ -81,9 +78,9 @@ representative class distributions in both sets
 
 | Metric | Train | Test |
 |---|---|---|
-| R² | 0.947 | 0.811 |
-| RMSE (eV) | 0.375 | 0.708 |
-| MAE (eV) | 0.222 | 0.408 |
+| R² | 0.896 | 0.729 |
+| RMSE (eV) | 0.526 | 0.844 |
+| MAE (eV) | 0.182 | 0.395 |
 
 The model shows some overfitting, reflected in the gap between train and test 
 scores. The test MAE of ~0.41 eV is competitive given that PBE-DFT itself 
@@ -93,10 +90,10 @@ carries an intrinsic error of 0.5–1.0 eV relative to experiment.
 
 | Feature | Importance |
 |---|---|
-| dos_peak_count | 0.277 |
-| density_g_cm3 | 0.112 |
-| dos_mean_density | 0.104 |
-| is_direct_gap | 0.087 |
+| dos_peak_count | 0.278 |
+| density_g_cm3 | 0.113 |
+| dos_integral_vb | 0.099 |
+| is_direct_gap | 0.084 |
 | n_elements | 0.081 |
 
 ---
@@ -115,9 +112,9 @@ or more diverse training data
 
 1. Clone the repository
 2. Install dependencies: `pip install -r requirements.txt`
-3. Download the dataset: `python data_download.py`
-4. Run feature engineering and EDA: `python withmetal.py`
-5. Train the model: `python model.py`
+3. Download the dataset: `python Data_downloader.py`
+4. Run feature engineering and EDA: `python model_preparation.py`
+5. Train the model: `python Model.py`
 
 ---
 
